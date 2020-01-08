@@ -1,7 +1,6 @@
 @extends('layouts.front')
 
 @section('content')
-
     <div class="container">
         <div class="row">
             <h2>チケット一覧</h2>

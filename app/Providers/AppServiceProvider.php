@@ -23,16 +23,8 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        // 管理画面用のクッキー名称、セッションテーブル名を変更する
-        $uri = isset($_SERVER['REQUEST_URI']) ? $_SERVER['REQUEST_URI'] : '';
-        if (strpos($uri, '/admin/') === 0 || $uri === '/admin') {
-            config([
-                'session.cookie' => config('const.session_cookie_admin'),
-                'session.table' => config('const.ssession_table_admin'),
-            ]);
-        }
         if (\App::environment('production')) {
-        \URL::forceScheme('https');
+            \URL::forceScheme('https');
         }
     }
 }
