@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 // 以下を追記することでTickets Modelが扱えるようになる
 use App\Ticket;
+use Storage;
 
 
 
@@ -28,8 +29,8 @@ class TicketsController extends Controller
 
       // フォームから画像が送信されてきたら、保存して、$tickets->image_path に画像のパスを保存する
       if (isset($form['image'])) {
-        $path = $request->file('image')->store('public/image');
-        $tickets->image_path = basename($path);
+      $path = Storage::disk('s3')->putFile('/',$form['image'],'public');
+      $tickets->image_path = Storage::disk('s3')->url($path);
       } else {
           $tickets->image_path = null;
       }
@@ -79,8 +80,8 @@ class TicketsController extends Controller
       // 送信されてきたフォームデータを格納する
       $tickets_form = $request->all();
       if (isset($tickets_form['image'])) {
-        $path = $request->file('image')->store('public/image');
-        $tickets->image_path = basename($path);
+        $path = Storage::disk('s3')->putFile('/',$form['image'],'public');
+        $tickets->image_path = Storage::disk('s3')->url($path);
         unset($tickets_form['image']);
       } elseif (isset($request->remove)) {
         $tickets->image_path = null;

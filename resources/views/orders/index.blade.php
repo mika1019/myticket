@@ -66,7 +66,7 @@
                                         @endif
                                     <div class="image col-md-6 text-right mt-4">
                                         @if ($ticket->image_path)
-                                            <img src="{{ asset('storage/image/' . $ticket->image_path) }}">
+                                            <img src="{{ $ticket->image_path }}">
                                         @endif
                                     </div>
                                     <input type="submit" class="btn btn-primary" value="購入">
