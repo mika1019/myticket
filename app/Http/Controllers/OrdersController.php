@@ -14,12 +14,11 @@ class OrdersController extends Controller
         $cond_title = $request->cond_title;
       if ($cond_title != '') {
           // 検索されたら検索結果を取得する
-          $tickets = Ticket::where('title', $cond_title)->get();
+          $tickets = Ticket::where('ticket_title', 'LIKE', "%$cond_title%")->get();
       } else {
           // それ以外はすべてのチケットを取得する
-          $tickets = Ticket::all();
+          $tickets = Ticket::all()->sortByDesc('updated_at');;
       }
-        $tickets = Ticket::all()->sortByDesc('updated_at');
 
         // tickets/index.blade.php ファイルを渡している
         // また View テンプレートに  orders、という変数を渡している
