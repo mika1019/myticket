@@ -3,7 +3,7 @@
 @section('content')
     <div class="container">
         <div class="row">
-            <h2>チケット一覧</h2>
+            <h2>ライブチケット販売サイト</h2>
         </div>
         <hr color="#c0c0c0">
         
