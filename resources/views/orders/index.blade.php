@@ -2,11 +2,13 @@
 
 @section('content')
     <div class="container">
-        <div class="row">
+        <div class="">
             <h2>ライブチケット販売サイト</h2>
+            <p>ライブ情報の検索、購入サイト</p>
+            <p>初めての方は<a href="/register">こちら</a></p>
         </div>
         <hr color="#c0c0c0">
-        
+
         <div class="row">
             <div class="col-md-4">
                 <a href="{{ action('OrdersController@history') }}" role="button" class="btn btn-primary">マイページ</a>

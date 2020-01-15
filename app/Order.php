@@ -16,7 +16,7 @@ class Order extends Model
     // Orderモデルに関連付けを行う
     public function ticket()
     {
-      return $this->belongsTo('App\Ticket');
+      return $this->belongsTo('App\Ticket')->withDefault();
 
     }
     public function user()
